@@ -56,10 +56,14 @@ function capitalize(word) {
 
 function game() {
     for (i = 0; i < 5; i++) {
-        playRound(getPlayerChoice(), getComputerChoice());
+        console.log(playRound(getPlayerChoice(), getComputerChoice()));
     }
     console.log(
             `Player: ${playerWins} \nComputer: ${computerWins}`);
+    
+    if (playerWins > computerWins) console.log("You won!");
+    else if (computerWins > playerWins) console.log("You lost!");
+    else console.log("Tied game");
 }
 
 game();
