@@ -28,9 +28,7 @@ function getWinner(playerChoice, computerChoice) {
     }
 }
 
-function playRound() {
-    let playerChoice = getPlayerChoice();
-    let computerChoice = getComputerChoice();
+function playRound(playerChoice, computerChoice) {
     let winner = getWinner(playerChoice, computerChoice);
     switch (winner) {
         case 0: return "Tie";
@@ -45,4 +43,6 @@ function capitalize(word) {
     return firstLetter.toUpperCase() + restOfWord.toLowerCase();
 }
 
-console.log(playRound());
+const playerSelection = "rock";
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
