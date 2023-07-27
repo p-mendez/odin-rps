@@ -54,3 +54,12 @@ function capitalize(word) {
     return firstLetter.toUpperCase() + restOfWord.toLowerCase();
 }
 
+function game() {
+    for (i = 0; i < 5; i++) {
+        playRound(getPlayerChoice(), getComputerChoice());
+    }
+    console.log(
+            `Player: ${playerWins} \nComputer: ${computerWins}`);
+}
+
+game();
