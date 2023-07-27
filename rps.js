@@ -1,3 +1,7 @@
+let playerWins = 0;
+let computerWins = 0;
+let round = 1;
+
 function getComputerChoice() {
     let choices = ["rock", "paper", "scissors"];
     return choices[Math.floor(Math.random() * choices.length)];
@@ -8,7 +12,7 @@ function getPlayerChoice() {
     let validChoices = ["rock", "paper", "scissors"];
 
     while (!validChoices.includes(choice)) {
-        choice = prompt("Enter rock, paper, or scissors: ").toLowerCase();
+        choice = prompt(`Round ${round}: Enter rock, paper, or scissors: `).toLowerCase();
     }
 
     return choice;
@@ -30,10 +34,17 @@ function getWinner(playerChoice, computerChoice) {
 
 function playRound(playerChoice, computerChoice) {
     let winner = getWinner(playerChoice, computerChoice);
+    round++;
     switch (winner) {
         case 0: return "Tie";
-        case 1: return `You Win! ${capitalize(playerChoice)} beats ${capitalize(computerChoice)}`;
-        case 2: return `You Lose! ${capitalize(computerChoice)} beats ${capitalize(playerChoice)}`;
+        case 1: {
+            playerWins++;
+            return `You Win! ${capitalize(playerChoice)} beats ${capitalize(computerChoice)}`;
+        }
+        case 2: {
+            computerWins++;
+            return `You Lose! ${capitalize(computerChoice)} beats ${capitalize(playerChoice)}`;
+        }
     }
 }
 
@@ -43,6 +54,3 @@ function capitalize(word) {
     return firstLetter.toUpperCase() + restOfWord.toLowerCase();
 }
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
